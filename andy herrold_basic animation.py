@@ -1,7 +1,7 @@
 #andy herrold basic animation
 #import and initialize
+import pygame
 def main():
-    Import pygame
     pygame.init()
     
 #Create Display
@@ -10,7 +10,25 @@ def main():
     
 #Create backround entity
     backround = pygame.Surface(screen.get_size())
-    backround.fill("green")
+    backround.fill(pygame.Color("green"))
+#Assign
+    clock = pygame.time.Clock()
+    keepGoing = True
+#Set up main loop
+    while keepGoing:
+        clock.tic(30)
+#event handling
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                keepGoing = False
+# Refresh display
+        screen.blit(backround, (0, 0))
+        pygame.display.flip()
+        
+    pygame.quit()
+    
+        
+    
     
     
     
