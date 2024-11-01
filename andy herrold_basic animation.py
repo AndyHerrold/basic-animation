@@ -1,6 +1,7 @@
 #andy herrold basic animation
 #import and initialize
 import pygame
+
 def main():
     pygame.init()
     
@@ -10,7 +11,15 @@ def main():
     
 #Create backround entity
     backround = pygame.Surface(screen.get_size())
-    backround.fill(pygame.Color("green"))
+    backround = backround.convert()
+    backround.fill((0, 255, 0))
+#build a box
+    box = pygame.surface ((25, 25))
+    box=box.convert()
+    box.fill ((255, 0, 0))
+#set box variables
+    box_x = 0
+    box_y = 200
 #Assign
     clock = pygame.time.Clock()
     keepGoing = True
@@ -21,21 +30,18 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 keepGoing = False
-# Refresh display
-        screen.blit(backround, (0, 0))
-        pygame.display.flip()
-#build a box
-        box = pygame.surface ((25, 25))
-        box=box.convert()
-        box.fill ((255, 0, 0))
-#set box variables
-        box_x = 0
-        box_y = 200
 # modify box values
         box_x +=5
 #check boundaries
         if box_x> screen.get_width():
             box_x=0
+
+# Refresh display
+        screen.blit(backround, (0, 0))
+        screen.blit(box, (box_x, box_y))
+        pygame.display.flip()
+# modify box values
+        box_x +=5
 #refresh screeen
         scren.blit(backround, (0, 0,))
         screen.blit(box, (box_x, box_y))
@@ -47,8 +53,9 @@ def main():
 #set image variables
 
 
-        
-    pygame.quit()
+pygame.quit()
+if __name__ == "__main__":
+    main()
     
         
     
